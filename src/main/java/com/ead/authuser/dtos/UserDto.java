@@ -2,6 +2,7 @@ package com.ead.authuser.dtos;
 
 import com.ead.authuser.validation.UsernameConstraint;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Data;
 
@@ -44,10 +45,13 @@ public class UserDto {
     @JsonView({UserView.PasswordPut.class})
     private String oldPassword;
 
+//    @NotBlank(groups = UserView.RegistrationPost.class)
     @JsonView({UserView.RegistrationPost.class, UserView.UserPut.class})
+    @JsonProperty("fullName")
     private String fullName;
 
     @JsonView({UserView.RegistrationPost.class, UserView.UserPut.class})
+    @JsonProperty("phoneNumber")
     private String phoneNumber;
 
     @JsonView({UserView.RegistrationPost.class, UserView.UserPut.class})
@@ -57,4 +61,11 @@ public class UserDto {
     @JsonView({UserView.ImagePut.class})
     private String imageUrl;
 
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 }
