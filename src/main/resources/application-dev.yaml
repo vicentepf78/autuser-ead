@@ -1,7 +1,5 @@
 
 spring:
-  application:
-    name: ead-authuser-service
   config:
     import: 'configserver:'
   cloud:
